@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class IndroductionPage extends HookWidget {
   const IndroductionPage({super.key});
@@ -43,7 +44,6 @@ class IndroductionPage extends HookWidget {
           height: 8,
           decoration: BoxDecoration(
             color: currentPage.value == index ? Colors.blue : Colors.grey,
-            // shape: BoxShape.circle,
             borderRadius: BorderRadius.circular(10),
           ),
         );
@@ -71,6 +71,7 @@ class IndroductionPage extends HookWidget {
               onPressed: () {
                 if (isLastPage()) {
                   // Navigate to home screen or main app page
+                  context.push("/signin");
                 } else {
                   pageController.nextPage(
                     duration: const Duration(milliseconds: 300),
@@ -112,7 +113,7 @@ class OnboardingPage extends StatelessWidget {
     // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(

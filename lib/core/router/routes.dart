@@ -3,6 +3,8 @@ import 'package:flutter_application_1/feature/account/view/pages/profile_form_pa
 import 'package:flutter_application_1/feature/forgotPassword/view/pages/create_new_password_page.dart';
 import 'package:flutter_application_1/feature/forgotPassword/view/pages/forgot_password_page.dart';
 import 'package:flutter_application_1/feature/indroductionPage/view/pages/indroduction_page.dart';
+import 'package:flutter_application_1/feature/signInPage/view/pages/sign_in_page.dart';
+import 'package:flutter_application_1/feature/signUpPage/view/pages/sign_up.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -37,6 +39,16 @@ final router = GoRouter(
       path: "/indro",
       name: "intro",
       builder: (context, state) => const IndroductionPage(),
+    ),
+    GoRoute(
+      path: "/signin",
+      name: "signin",
+      builder: (context, state) => const SignInPage(),
+    ),
+    GoRoute(
+      path: "/signup",
+      name: "signup",
+      builder: (context, state) => const SignUpPage(),
     ),
   ],
 );
