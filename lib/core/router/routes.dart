@@ -5,10 +5,12 @@ import 'package:flutter_application_1/feature/forgotPassword/view/pages/forgot_p
 import 'package:flutter_application_1/feature/indroductionPage/view/pages/indroduction_page.dart';
 import 'package:flutter_application_1/feature/signInPage/view/pages/sign_in_page.dart';
 import 'package:flutter_application_1/feature/signUpPage/view/pages/sign_up.dart';
+import 'package:flutter_application_1/feature/splashScreen/view/pages/splash_screen.dart';
+import 'package:flutter_application_1/feature/splashScreen/view/pages/welcome_page.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
-  initialLocation: "/",
+  initialLocation: "/splash",
   routes: [
     GoRoute(
       path: "/",
@@ -49,6 +51,16 @@ final router = GoRouter(
       path: "/signup",
       name: "signup",
       builder: (context, state) => const SignUpPage(),
+    ),
+    GoRoute(
+      path: "/splash",
+      name: "splash",
+      builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: "/welcome",
+      name: "welcome",
+      builder: (context, state) => const WelcomePage(),
     ),
   ],
 );
