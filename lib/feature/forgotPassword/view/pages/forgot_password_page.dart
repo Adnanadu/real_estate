@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgotPasswordPage extends HookWidget {
   const ForgotPasswordPage({super.key});
@@ -29,8 +30,8 @@ class ForgotPasswordPage extends HookWidget {
               const SizedBox(height: 40),
 
               // Illustration
-              Image.asset(
-                'assets/forgot_password.png', // Replace with your actual asset path
+              Image.network(
+                'https://media.istockphoto.com/id/1412282189/photo/lock-network-technology-concept.jpg?s=612x612&w=0&k=20&c=hripuxLs9pS_7Ln6YWQR-Ow2_-BU5RdQ4vOY8s1q1iQ=', // Replace with your actual asset path
                 height: 200,
               ),
               const SizedBox(height: 40),
@@ -66,7 +67,7 @@ class ForgotPasswordPage extends HookWidget {
                         children: [
                           Text("via SMS:",
                               style: TextStyle(color: Colors.grey)),
-                          Text("+1 111 ******99",
+                          Text("+91 111 ******99",
                               style: TextStyle(fontSize: 16)),
                         ],
                       ),
@@ -115,6 +116,9 @@ class ForgotPasswordPage extends HookWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle continue action based on selectedMethod.value
+                    //pass here in extra parameters inside mobile number or mail
+                    // context.push("/otpcode");
+                    context.push("/newpassword");
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,

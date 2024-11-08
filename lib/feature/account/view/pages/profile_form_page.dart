@@ -14,6 +14,19 @@ class ProfileFormPage extends HookWidget {
     final emailController = useTextEditingController();
     final phoneController = useTextEditingController();
 
+    // State to track if the full name is filled
+    final isFullNameFilled = useState(false);
+
+    // Listener to update the state when the full name changes
+    useEffect(() {
+      void listener() {
+        isFullNameFilled.value = fullNameController.text.isNotEmpty;
+      }
+
+      fullNameController.addListener(listener);
+      return () => fullNameController.removeListener(listener);
+    }, [fullNameController]);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -141,15 +154,14 @@ class ProfileFormPage extends HookWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Handle continue action
-                    context.push("/otpcode");
-                  },
+                  onPressed: isFullNameFilled.value
+                      ? () {
+                          // Add your verification logic here
+                          context.push("/otpcode");
+                        }
+                      : null,
                   style: ElevatedButton.styleFrom(
-                    // Color(0xff3062c8),
-                    backgroundColor: fullNameController.value.text.isNotEmpty
-                        ? const Color(0xff246afd)
-                        : const Color(0xff3062c8),
+                    backgroundColor: const Color(0xff3062c8),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   child: const Text("Continue"),
