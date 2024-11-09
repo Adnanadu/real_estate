@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/widgets/continue_with_social_media_widget.dart';
 import 'package:flutter_application_1/core/widgets/via_social_media_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -105,7 +104,9 @@ class SignInPage extends HookWidget {
                   const Text('or continue with',
                       style: TextStyle(color: Colors.grey)),
                   const SizedBox(height: 16),
-                  const ContinueWithSocialMediaWidget(),
+
+                  /// Add via social media widget
+                  const ViaSocialMediaWidget(),
                   const SizedBox(height: 24),
                   GestureDetector(
                     onTap: () {
