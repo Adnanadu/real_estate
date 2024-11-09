@@ -111,8 +111,7 @@ class CreateNewPasswordPage extends HookWidget {
                 context.pushNamed("intro");
               },
               style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                minimumSize: const Size(double.infinity, 56),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),

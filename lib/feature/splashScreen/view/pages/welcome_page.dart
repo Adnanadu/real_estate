@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomePage extends HookWidget {
   const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // useEffect(() {
-    //   Future.delayed(const Duration(seconds: 1), () {
-    //     if (context.mounted) {
-    //       context.push("/");
-    //     }
-    //   });
-    //   return null; // Cleanup function is not needed here
-    // }, []);
+    useEffect(() {
+      Future.delayed(const Duration(seconds: 1), () {
+        if (context.mounted) {
+          context.push("/");
+        }
+      });
+      return null; // Cleanup function is not needed here
+    }, []);
     // Animation for circular images
     final animationController = useAnimationController(
       duration: const Duration(seconds: 2),

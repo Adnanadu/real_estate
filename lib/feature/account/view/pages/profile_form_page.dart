@@ -154,6 +154,7 @@ class ProfileFormPage extends HookWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
+                  
                   onPressed: isFullNameFilled.value
                       ? () {
                           // Add your verification logic here

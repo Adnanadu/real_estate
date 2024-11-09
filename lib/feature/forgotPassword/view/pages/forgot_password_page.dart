@@ -62,14 +62,16 @@ class ForgotPasswordPage extends HookWidget {
                     children: [
                       Icon(Icons.message, color: Colors.blue, size: 30),
                       SizedBox(width: 16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("via SMS:",
-                              style: TextStyle(color: Colors.grey)),
-                          Text("+91 111 ******99",
-                              style: TextStyle(fontSize: 16)),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("via SMS:",
+                                style: TextStyle(color: Colors.grey)),
+                            Text("+91 111 ******99",
+                                style: TextStyle(fontSize: 16)),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -95,14 +97,17 @@ class ForgotPasswordPage extends HookWidget {
                     children: [
                       Icon(Icons.email, color: Colors.blue, size: 30),
                       SizedBox(width: 16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("via Email:",
-                              style: TextStyle(color: Colors.grey)),
-                          Text("and***ley@yourdomain.com",
-                              style: TextStyle(fontSize: 16)),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("via Email:",
+                                style: TextStyle(color: Colors.grey)),
+                            Text("and***ley@yourdomain.com",
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black)),
+                          ],
+                        ),
                       ),
                     ],
                   ),

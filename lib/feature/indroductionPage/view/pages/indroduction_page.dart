@@ -7,17 +7,22 @@ class IndroductionPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize a PageController to manage the PageView
     final pageController = usePageController();
+    // State to track the current page index
     final currentPage = useState(0);
 
+    // Callback function to update the current page index
     void onPageChanged(int index) {
       currentPage.value = index;
     }
 
+    // Check if the current page is the last page
     bool isLastPage() {
       return currentPage.value == 2;
     }
 
+    // Build a list of OnboardingPage widgets for the PageView
     List<Widget> buildPageViewChildren() {
       return const [
         OnboardingPage(
@@ -35,6 +40,7 @@ class IndroductionPage extends HookWidget {
       ];
     }
 
+    // Build a list of indicators to show the current page index
     List<Widget> buildPageIndicators() {
       return List.generate(3, (index) {
         return AnimatedContainer(
@@ -53,6 +59,9 @@ class IndroductionPage extends HookWidget {
     return Scaffold(
       body: Column(
         children: [
+          /// 32px space between the top and the page view
+          const SizedBox(height: 32),
+          // Display the PageView with onboarding images
           Expanded(
             child: PageView(
               controller: pageController,
@@ -60,19 +69,26 @@ class IndroductionPage extends HookWidget {
               children: buildPageViewChildren(),
             ),
           ),
+
+          /// 16px space between the page view and the indicators
+          const SizedBox(height: 16),
+
+          // Display the page indicators below the PageView
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: buildPageIndicators(),
           ),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 20),
+          // Button to navigate to the next page or sign in
           Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: const EdgeInsets.all(24.0),
             child: ElevatedButton(
               onPressed: () {
                 if (isLastPage()) {
-                  // Navigate to home screen or main app page
+                  // Navigate to the sign-in page if on the last page
                   context.push("/signin");
                 } else {
+                  // Move to the next page in the PageView
                   pageController.nextPage(
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn,
@@ -110,34 +126,38 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-            height: screenHeight * 0.6,
-            width: double.infinity,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32.0),
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue,
+    // Get the screen height for responsive image sizing
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    return SingleChildScrollView(
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // Display the onboarding image
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              height: screenHeight * 0.55,
+              width: double.infinity,
             ),
           ),
-        ),
-      ],
+          // Display the title text below the image
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
