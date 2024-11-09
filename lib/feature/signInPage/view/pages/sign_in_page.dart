@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/continue_with_social_media_widget.dart';
+import 'package:flutter_application_1/core/widgets/via_social_media_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
@@ -103,29 +105,7 @@ class SignInPage extends HookWidget {
                   const Text('or continue with',
                       style: TextStyle(color: Colors.grey)),
                   const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.facebook, color: Colors.blue),
-                        onPressed: () {
-                          // Implement Facebook sign-in logic
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.g_mobiledata, color: Colors.red),
-                        onPressed: () {
-                          // Implement Google sign-in logic
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.apple, color: Colors.black),
-                        onPressed: () {
-                          // Implement Apple sign-in logic
-                        },
-                      ),
-                    ],
-                  ),
+                  const ContinueWithSocialMediaWidget(),
                   const SizedBox(height: 24),
                   GestureDetector(
                     onTap: () {
