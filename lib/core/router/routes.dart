@@ -4,6 +4,7 @@ import 'package:flutter_application_1/feature/forgotPassword/view/pages/create_n
 import 'package:flutter_application_1/feature/forgotPassword/view/pages/forgot_password_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/home_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/notification_page.dart';
+import 'package:flutter_application_1/feature/homePage/view/pages/recommedation_page.dart';
 import 'package:flutter_application_1/feature/indroductionPage/view/pages/indroduction_page.dart';
 import 'package:flutter_application_1/feature/signInPage/view/pages/sign_in_page.dart';
 import 'package:flutter_application_1/feature/signUpPage/view/pages/sign_up.dart';
@@ -73,6 +74,11 @@ final router = GoRouter(
       path: "/notifi",
       name: "notifi",
       builder: (context, state) => const NotificationPage(),
+    ),
+    GoRoute(
+      path: "/recommendation",
+      name: "recommendation",
+      builder: (context, state) => const RecommedationPage(),
     ),
   ],
 );

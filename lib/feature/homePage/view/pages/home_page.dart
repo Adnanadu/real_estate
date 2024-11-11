@@ -111,7 +111,10 @@ class HomePage extends HookWidget {
                           Text("Featured",
                               style: Theme.of(context).textTheme.titleLarge),
                           TextButton(
-                              onPressed: () {}, child: const Text("See All")),
+                              onPressed: () {
+                                // context.push('/recommendation');
+                              },
+                              child: const Text("See All")),
                         ],
                       ),
                     ),
@@ -129,7 +132,10 @@ class HomePage extends HookWidget {
                             "Our Recommendations",
                           ),
                           TextButton(
-                              onPressed: () {}, child: const Text("See All")),
+                              onPressed: () {
+                                context.push('/recommendation');
+                              },
+                              child: const Text("See All")),
                         ],
                       ),
                     ),
