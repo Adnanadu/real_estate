@@ -59,7 +59,7 @@ class HomePage extends HookWidget {
                     ///profile
                     ListTile(
                       leading: const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/logo.png'),
+                        // backgroundImage: AssetImage('assets/images/logo.png'),
                         radius: 20,
                       ),
                       title: const Text('Wishing 👋'),
