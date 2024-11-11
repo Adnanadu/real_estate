@@ -3,6 +3,7 @@ import 'package:flutter_application_1/feature/homePage/view/widgets/featured_car
 import 'package:flutter_application_1/feature/homePage/view/widgets/filtred_button_widget.dart';
 import 'package:flutter_application_1/feature/homePage/view/widgets/recommendation_card_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 // Mock Data
 final featuredItems = [
@@ -72,10 +73,9 @@ class HomePage extends HookWidget {
                             child:
                                 const Icon(Icons.notifications_none_outlined)),
                       ),
-
-                      // onTap: () {
-                      // context.push('/signin');
-                      // },
+                      onTap: () {
+                        context.push('/notifi');
+                      },
                     ),
 
                     ///search bar
