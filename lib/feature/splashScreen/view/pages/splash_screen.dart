@@ -29,27 +29,30 @@ class SplashScreen extends HookWidget {
         children: [
           const Spacer(),
           // Logo and App Name
-          const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.blue,
-                child: Icon(
-                  Icons.home, // Replace with your custom icon if needed
-                  color: Colors.white,
+          const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.blue,
+                  child: Icon(
+                    Icons.home, // Replace with your custom icon if needed
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                "Reasa",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                SizedBox(height: 8),
+                Text(
+                  "Reasa",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const Spacer(),
           // Loading Indicator Animation

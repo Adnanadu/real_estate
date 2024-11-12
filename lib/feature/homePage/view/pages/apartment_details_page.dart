@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/feature/homePage/view/widgets/expandable_text_widget.dart';
 import 'package:flutter_application_1/feature/homePage/view/widgets/share_functionality_bottom_sheet_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -138,20 +139,23 @@ class ApartmentDetailsPage extends HookWidget {
                           Icons.bed,
                           color: Colors.blue,
                         ),
-                        SizedBox(width: 4),
+                        SizedBox(width: 8),
                         Text('8 Beds'),
+                        SizedBox(width: 8),
                         Icon(
                           Icons.bathtub,
                           color: Colors.blue,
                         ),
-                        SizedBox(width: 4),
-                        Text('8 Beds'),
+                        SizedBox(width: 8),
+                        Text('3 bath'),
+                        SizedBox(width: 8),
                         Icon(
                           Icons.square_foot,
                           color: Colors.blue,
                         ),
-                        SizedBox(width: 4),
-                        Text('8 Beds'),
+                        SizedBox(width: 8),
+                        Text('2000 sqft'),
+                        SizedBox(width: 8),
                       ],
                     ),
                   ],
@@ -195,27 +199,14 @@ class ApartmentDetailsPage extends HookWidget {
           ),
 
           ///overview
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Overview',
-                  style: GoogleFonts.poppins(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: const Text('Read more...',
-                      style: TextStyle(color: Colors.blue)),
-                ),
+                ExpandableTextWidget(
+                    text:
+                        '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'''),
               ],
             ),
           ),
