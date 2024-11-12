@@ -242,14 +242,146 @@ class ApartmentDetailsPage extends HookWidget {
               ],
             ),
           ),
-
           // Add your gallery implementation here
-          Container(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Gallery",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                SizedBox(
+                  height: 150,
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                    ),
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      if (index < 2) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            height: 200,
+                            // width: double.infinity,
+                          ),
+                        );
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              ///view all gallery
+                              ///navigate to gallery page
+                              context.push('/gallery');
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              height: 200,
+                              child: const Center(child: Text('View All')),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
 
-          // Add your location map implementation here
-          Container(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Location',
+                  style: GoogleFonts.poppins(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+// Add your location map implementation here
+                Container(),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Row(
+                  children: [
+                    Icon(Icons.star, color: Colors.orange, size: 20),
+                    Text('4.8 (1,275 reviews)'),
+                  ],
+                ),
+                TextButton(onPressed: () {}, child: const Text('See All')),
+              ],
+            ),
+          ),
 
           // Add your reviews implementation here
+          Column(
+            children: [
+              ListTile(
+                leading: const CircleAvatar(child: Icon(Icons.person)),
+                title: const Center(child: Text('Owner Name')),
+                trailing: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size(25, 40),
+                    side: const BorderSide(color: Colors.blue, width: 2),
+                  ),
+                  onPressed: () {},
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.star, color: Colors.orange, size: 16),
+                      SizedBox(width: 4),
+                      Text('4.8'),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: [
+                    ExpandableTextWidget(
+                        text:
+                            '''Lorem Ipsting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'''),
+                    SizedBox(height: 8),
+                  ],
+                ),
+              ),
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.favorite_border_outlined)),
+                  const Text("LIKE COUNT HERE"),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  const Text("6 days ago"),
+                ],
+              ),
+            ],
+          ),
+
           Container(),
         ]),
       ),
