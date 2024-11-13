@@ -3,6 +3,7 @@ import 'package:flutter_application_1/feature/account/view/pages/profile_form_pa
 import 'package:flutter_application_1/feature/forgotPassword/view/pages/create_new_password_page.dart';
 import 'package:flutter_application_1/feature/forgotPassword/view/pages/forgot_password_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/apartment_details_page.dart';
+import 'package:flutter_application_1/feature/homePage/view/pages/appartment_gallery_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/home_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/notification_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/recommedation_page.dart';
@@ -86,6 +87,11 @@ final router = GoRouter(
       name: "details",
       builder: (context, state) =>
           ApartmentDetailsPage(item: state.extra as Map<String, dynamic>),
+    ),
+    GoRoute(
+      path: "/gallery",
+      name: "gallery",
+      builder: (context, state) => AppartmentGalleryPage(),
     ),
   ],
 );
