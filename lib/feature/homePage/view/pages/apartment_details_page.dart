@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/feature/homePage/view/widgets/expandable_text_widget.dart';
-import 'package:flutter_application_1/feature/homePage/view/widgets/share_functionality_bottom_sheet_widget.dart';
+import 'package:flutter_application_1/feature/homePage/view/widgets/appartment_facility_widget.dart';
+import 'package:flutter_application_1/feature/homePage/view/widgets/appartment_image_widget.dart';
+import 'package:flutter_application_1/feature/homePage/view/widgets/appartment_mini_gallery_widget.dart';
+import 'package:flutter_application_1/feature/homePage/view/widgets/building_location_widget.dart';
+import 'package:flutter_application_1/feature/homePage/view/widgets/client_review_widget.dart';
+import 'package:flutter_application_1/feature/homePage/view/widgets/owner_info_and_review_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApartmentDetailsPage extends HookWidget {
@@ -19,86 +22,11 @@ class ApartmentDetailsPage extends HookWidget {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Stack(children: [
-            SizedBox(
-              width: screenwidth,
-              height: 300,
-              child: PageView(
-                controller: pageController,
-                onPageChanged: (index) {
-                  currentPage.value = index;
-                },
-                children: [
-                  Image.network(
-                    'https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D',
-                    fit: BoxFit.cover,
-                  ),
-                  Image.network(
-                    'https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D',
-                    fit: BoxFit.cover,
-                  ),
-                  Image.network(
-                    'https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D',
-                    fit: BoxFit.cover,
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: 20,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(3, (index) {
-                  return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 5),
-                    width: currentPage.value == index ? 30 : 8,
-                    height: 8,
-                    decoration: BoxDecoration(
-                      color: currentPage.value == index
-                          ? Colors.blue
-                          : Colors.grey,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  );
-                }),
-              ),
-            ),
-            SafeArea(
-              child: SizedBox(
-                height: 45,
-                child: Row(
-                  children: [
-                    const SizedBox(width: 16),
-                    IconButton(
-                        onPressed: () {
-                          context.pop();
-                        },
-                        icon: const Icon(Icons.arrow_back_outlined)),
-                    const Spacer(),
-                    IconButton(
-                        onPressed: () async {
-                          ///favorite page
-                        },
-                        icon: const Icon(Icons.favorite_border)),
-                    const SizedBox(width: 8),
-                    IconButton(
-                      icon: const Icon(Icons.share, color: Colors.black),
-                      onPressed: () async {
-                        /// share via multi-media Bottom Sheet
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (context) =>
-                                const ShareBottomSheetWidget());
-                      },
-                    ),
-                    const SizedBox(width: 16),
-                  ],
-                ),
-              ),
-            ),
-          ]),
+          ///apartment images
+          AppartmentImageWidgets(
+              screenwidth: screenwidth,
+              pageController: pageController,
+              currentPage: currentPage),
 
           // ///apartment info
           Padding(
@@ -173,149 +101,14 @@ class ApartmentDetailsPage extends HookWidget {
           ),
 
           ///owner info
-          ListTile(
-            leading: const CircleAvatar(child: Icon(Icons.person)),
-            title: const Text('Owner Name'),
-            subtitle: const Text('Owner'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Icon(Icons.message),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.message_outlined,
-                      color: Colors.blue.shade300,
-                    )),
-                const SizedBox(width: 8),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.call_outlined,
-                      color: Colors.blue.shade300,
-                    )),
-              ],
-            ),
-          ),
-
-          ///overview
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ExpandableTextWidget(
-                    text:
-                        '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'''),
-              ],
-            ),
-          ),
+          const OwnerInfoAndOverViewWidget(),
 
           ///facilities
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Facilities',
-                  style: GoogleFonts.poppins(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 16),
-
-                ///facility chip
-                Wrap(
-                  spacing: 16,
-                  runSpacing: 8,
-                  children: [
-                    _facilityChip(Icons.local_parking, 'Car Parking'),
-                    _facilityChip(Icons.pool, 'Swimming Pool'),
-                    _facilityChip(Icons.fitness_center, 'Gym & Fitness'),
-                    _facilityChip(Icons.restaurant, 'Restaurant'),
-                    _facilityChip(Icons.wifi, 'Wi-Fi & Network'),
-                    _facilityChip(Icons.pets, 'Pet Center'),
-                    _facilityChip(Icons.sports_soccer, 'Sport Center'),
-                    _facilityChip(Icons.local_laundry_service, 'Laundry'),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          const AppartmentFacilityWidget(),
           // Add your gallery implementation here
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Gallery",
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                SizedBox(
-                  height: 150,
-                  child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      if (index < 2) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade300,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            height: 200,
-                            // width: double.infinity,
-                          ),
-                        );
-                      } else {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              ///view all gallery
-                              ///navigate to gallery page
-                              context.push('/gallery');
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              height: 200,
-                              child: const Center(child: Text('View All')),
-                            ),
-                          ),
-                        );
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Location',
-                  style: GoogleFonts.poppins(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-// Add your location map implementation here
-                Container(),
-              ],
-            ),
-          ),
+          const AppartmentMiniGalleryWidget(),
+// Building Location Here
+          const BuildingLocationWidget(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
@@ -333,54 +126,7 @@ class ApartmentDetailsPage extends HookWidget {
           ),
 
           // Add your reviews implementation here
-          Column(
-            children: [
-              ListTile(
-                leading: const CircleAvatar(child: Icon(Icons.person)),
-                title: const Center(child: Text('Owner Name')),
-                trailing: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    minimumSize: const Size(25, 40),
-                    side: const BorderSide(color: Colors.blue, width: 2),
-                  ),
-                  onPressed: () {},
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.star, color: Colors.orange, size: 16),
-                      SizedBox(width: 4),
-                      Text('4.8'),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  children: [
-                    ExpandableTextWidget(
-                        text:
-                            '''Lorem Ipsting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'''),
-                    SizedBox(height: 8),
-                  ],
-                ),
-              ),
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.favorite_border_outlined)),
-                  const Text("LIKE COUNT HERE"),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  const Text("6 days ago"),
-                ],
-              ),
-            ],
-          ),
+          const ClientReviewsWidget(),
 
           Container(),
         ]),
@@ -443,15 +189,4 @@ class ApartmentDetailsPage extends HookWidget {
       ),
     );
   }
-}
-
-Widget _facilityChip(IconData icon, String label) {
-  return Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      Icon(icon, color: Colors.blue, size: 32),
-      const SizedBox(height: 4),
-      Text(label, style: const TextStyle(fontSize: 12)),
-    ],
-  );
 }
