@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/elevated_button_customized_widget.dart';
 import 'package:flutter_application_1/core/widgets/via_social_media_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -65,24 +66,32 @@ class SignUpPage extends HookWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
+              // ElevatedButton(
+              //   onPressed: () {
+              //     // Implement sign-up logic
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Colors.blue,
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(8),
+              //     ),
+              //     padding: const EdgeInsets.symmetric(vertical: 16),
+              //   ),
+              //   child: const Center(
+              //     child: Text(
+              //       'Sign up',
+              //       style: TextStyle(fontSize: 16, color: Colors.white),
+              //     ),
+              //   ),
+              // ),
+              ElevatedButtonCustomizedWidget(
+                onPressed: () async {
                   // Implement sign-up logic
+                  await context.push("/home");
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Sign up',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                ),
+                text: 'Sign up',
               ),
+
               const SizedBox(height: 24),
               const Text('or continue with',
                   style: TextStyle(color: Colors.grey)),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/elevated_button_customized_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
@@ -153,19 +154,27 @@ class ProfileFormPage extends HookWidget {
               // Continue Button
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  
-                  onPressed: isFullNameFilled.value
-                      ? () {
-                          // Add your verification logic here
-                          context.push("/otpcode");
-                        }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff3062c8),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("Continue"),
+                // child: ElevatedButton(
+
+                //   onPressed: isFullNameFilled.value
+                //       ? () {
+                //           // Add your verification logic here
+                //           context.push("/otpcode");
+                //         }
+                //       : null,
+                //   style: ElevatedButton.styleFrom(
+                //     backgroundColor: const Color(0xff3062c8),
+                //     padding: const EdgeInsets.symmetric(vertical: 16),
+                //   ),
+                //   child: const Text("Continue"),
+                // ),
+                child: ElevatedButtonCustomizedWidget(
+                  onPressed: () {
+                    // if (isFullNameFilled.value) {
+                    // }
+                    context.push("/otpcode");
+                  },
+                  text: 'Continue',
                 ),
               ),
             ],

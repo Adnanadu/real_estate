@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/elevated_button_customized_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
@@ -118,18 +119,27 @@ class ForgotPasswordPage extends HookWidget {
               // Continue Button
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                // child: ElevatedButton(
+                //   onPressed: () {
+                //     // Handle continue action based on selectedMethod.value
+                //     //pass here in extra parameters inside mobile number or mail
+                //     // context.push("/otpcode");
+                //     context.push("/newpassword");
+                //   },
+                //   style: ElevatedButton.styleFrom(
+                //     backgroundColor: Colors.blue,
+                //     padding: const EdgeInsets.symmetric(vertical: 16),
+                //   ),
+                //   child: const Text("Continue"),
+                // ),
+                child: ElevatedButtonCustomizedWidget(
                   onPressed: () {
                     // Handle continue action based on selectedMethod.value
                     //pass here in extra parameters inside mobile number or mail
                     // context.push("/otpcode");
                     context.push("/newpassword");
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("Continue"),
+                  text: 'Continue',
                 ),
               ),
             ],

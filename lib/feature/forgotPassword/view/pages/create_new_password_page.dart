@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/elevated_button_customized_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
@@ -105,21 +106,27 @@ class CreateNewPasswordPage extends HookWidget {
             const SizedBox(height: 30),
 
             // Continue Button
-            ElevatedButton(
+            // ElevatedButton(
+            //   onPressed: () {
+            //     // Add logic for continuing with password
+            //     context.pushNamed("intro");
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     minimumSize: const Size(double.infinity, 56),
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(25),
+            //     ),
+            //   ),
+            //   child: const Text(
+            //     'Continue',
+            //     style: TextStyle(fontSize: 18),
+            //   ),
+            // ),
+            ElevatedButtonCustomizedWidget(
               onPressed: () {
-                // Add logic for continuing with password
                 context.pushNamed("intro");
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 56),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-              child: const Text(
-                'Continue',
-                style: TextStyle(fontSize: 18),
-              ),
+              text: 'Continue',
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/elevated_button_customized_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -65,19 +66,25 @@ class OtpCodePage extends HookWidget {
               const SizedBox(height: 40),
 
               // Continue Button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle continue action with entered PIN
-                    context.push("/forgotpassword");
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text("Continue"),
-                ),
+              // SizedBox(
+              //   width: double.infinity,
+              //   child: ElevatedButton(
+              //     onPressed: () {
+              //       // Handle continue action with entered PIN
+              //       context.push("/forgotpassword");
+              //     },
+              //     style: ElevatedButton.styleFrom(
+              //       backgroundColor: Colors.blue,
+              //       padding: const EdgeInsets.symmetric(vertical: 16),
+              //     ),
+              //     child: const Text("Continue"),
+              //   ),
+              // ),
+              ElevatedButtonCustomizedWidget(
+                onPressed: () {
+                  context.push("/forgotpassword");
+                },
+                text: 'Continue',
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/elevated_button_customized_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
@@ -82,8 +83,34 @@ class IndroductionPage extends HookWidget {
           // Button to navigate to the next page or sign in
           Padding(
             padding: const EdgeInsets.all(24.0),
-            child: ElevatedButton(
+            // child: ElevatedButton(
+            //   onPressed: () {
+            //     if (isLastPage()) {
+            //       // Navigate to the sign-in page if on the last page
+            //       context.push("/signin");
+            //     } else {
+            //       // Move to the next page in the PageView
+            //       pageController.nextPage(
+            //         duration: const Duration(milliseconds: 300),
+            //         curve: Curves.easeIn,
+            //       );
+            //     }
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     minimumSize: const Size(double.infinity, 56),
+            //     foregroundColor: Colors.white,
+            //     backgroundColor: const Color(0xff246afd),
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(30),
+            //     ),
+            //     padding:
+            //         const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+            //   ),
+            //   child: Text(isLastPage() ? 'Get Started' : 'Next'),
+            // ),
+            child: ElevatedButtonCustomizedWidget(
               onPressed: () {
+                
                 if (isLastPage()) {
                   // Navigate to the sign-in page if on the last page
                   context.push("/signin");
@@ -95,17 +122,8 @@ class IndroductionPage extends HookWidget {
                   );
                 }
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 56),
-                foregroundColor: Colors.white,
-                backgroundColor: const Color(0xff246afd),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-              ),
-              child: Text(isLastPage() ? 'Get Started' : 'Next'),
+              text: isLastPage() ? 'Get Started' : 'Next',
+              isLastPage: isLastPage(),
             ),
           ),
         ],
