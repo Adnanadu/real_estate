@@ -6,6 +6,7 @@ import 'package:flutter_application_1/feature/homePage/view/widgets/building_loc
 import 'package:flutter_application_1/feature/homePage/view/widgets/client_review_widget.dart';
 import 'package:flutter_application_1/feature/homePage/view/widgets/owner_info_and_review_widget.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ApartmentDetailsPage extends HookWidget {
@@ -18,6 +19,7 @@ class ApartmentDetailsPage extends HookWidget {
 
     final double screenwidth = MediaQuery.sizeOf(context).width;
 
+    final isLiked = useState<bool>(false);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -120,13 +122,16 @@ class ApartmentDetailsPage extends HookWidget {
                     Text('4.8 (1,275 reviews)'),
                   ],
                 ),
-                TextButton(onPressed: () {}, child: const Text('See All')),
+                TextButton(onPressed: () {
+                  // page route to Review Page
+                  context.push('/review');
+                }, child: const Text('See All')),
               ],
             ),
           ),
 
           // Add your reviews implementation here
-          const ClientReviewsWidget(),
+          ClientReviewsWidget(isLiked: isLiked),
 
           Container(),
         ]),

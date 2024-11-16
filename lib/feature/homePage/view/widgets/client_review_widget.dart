@@ -4,7 +4,9 @@ import 'package:flutter_application_1/feature/homePage/view/widgets/expandable_t
 class ClientReviewsWidget extends StatelessWidget {
   const ClientReviewsWidget({
     super.key,
+    required this.isLiked,
   });
+  final ValueNotifier<bool> isLiked;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,6 @@ class ClientReviewsWidget extends StatelessWidget {
             ),
           ),
         ),
-        // const SizedBox(height: 8),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
@@ -46,9 +47,20 @@ class ClientReviewsWidget extends StatelessWidget {
         ),
         Row(
           children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.favorite_border_outlined)),
+            ValueListenableBuilder<bool>(
+              valueListenable: isLiked,
+              builder: (context, value, child) {
+                return IconButton(
+                  onPressed: () {
+                    isLiked.value = !isLiked.value;
+                  },
+                  icon: Icon(
+                    value ? Icons.favorite : Icons.favorite_border_outlined,
+                    color: value ? Colors.red : null,
+                  ),
+                );
+              },
+            ),
             const Text("LIKE COUNT HERE"),
             const SizedBox(width: 4),
             const Text("6 days ago"),

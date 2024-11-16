@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/feature/authPage/view/widgets/otp_code_page.dart';
+import 'package:flutter_application_1/feature/authPage/view/pages/otp_code_page.dart';
 import 'package:flutter_application_1/feature/authPage/view/pages/profile_form_page.dart';
 import 'package:flutter_application_1/feature/explorePage/view/pages/explore_page.dart';
 import 'package:flutter_application_1/feature/favoritePage/view/pages/favorite_page.dart';
@@ -6,6 +6,7 @@ import 'package:flutter_application_1/feature/forgotPassword/view/pages/create_n
 import 'package:flutter_application_1/feature/forgotPassword/view/pages/forgot_password_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/apartment_details_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/appartment_gallery_page.dart';
+import 'package:flutter_application_1/feature/homePage/view/pages/client_review_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/home_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/notification_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/pages/recommedation_page.dart';
@@ -116,6 +117,11 @@ final router = GoRouter(
       path: "/profile",
       name: "profile",
       builder: (context, state) => const ProfilePage(),
+    ),
+    GoRoute(
+      path: "/review",
+      name: "review",
+      builder: (context, state) => const ClientReviewPage(),
     ),
   ],
 );
