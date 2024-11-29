@@ -72,6 +72,7 @@ class HomePage extends HookWidget {
     final recomendationScrollController = useScrollController();
     final gridViewScrollController = useScrollController();
     final selectedIndex = useState<int?>(0);
+    
     return Scaffold(
       body: PageView(
           controller: pageController,
