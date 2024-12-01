@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/controller/theme_controller.dart';
 import 'package:flutter_application_1/feature/explorePage/view/pages/explore_page.dart';
 import 'package:flutter_application_1/feature/favoritePage/view/pages/favorite_page.dart';
 import 'package:flutter_application_1/feature/homePage/view/widgets/featured_card_widget.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_application_1/feature/messagePage/view/pages/message_pag
 import 'package:flutter_application_1/feature/profilePage/view/pages/profile_page.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Mock Data
 final featuredItems = [
@@ -41,11 +44,13 @@ final recommendationItems = [
   // More items...
 ];
 
-class HomePage extends HookWidget {
+class HomePage extends HookConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Define a controller for the ThemeProvider
+    final themeController = ThemeController(ref);
     // Define a controller for the PageView
     final pageController = usePageController();
 
@@ -72,7 +77,7 @@ class HomePage extends HookWidget {
     final recomendationScrollController = useScrollController();
     final gridViewScrollController = useScrollController();
     final selectedIndex = useState<int?>(0);
-    
+
     return Scaffold(
       body: PageView(
           controller: pageController,
@@ -94,17 +99,35 @@ class HomePage extends HookWidget {
                         ),
                         title: const Text('Wishing 👋'),
                         subtitle: const Text('Name'),
-                        trailing: CircleAvatar(
-                          radius: 20,
-                          backgroundColor: Colors.white,
-                          child: Badge.count(
-                              count: 1,
-                              child: const Icon(
-                                  Icons.notifications_none_outlined)),
+                        trailing: FittedBox(
+                          child: Row(
+                            children: [
+                              CupertinoButton(
+                                  child: themeController.isDarkMode()
+                                      ? const Icon(CupertinoIcons.moon)
+                                      : const Icon(CupertinoIcons.sun_max),
+                                  onPressed: () {
+                                    if (themeController.isDarkMode()) {
+                                      themeController.setLightTheme();
+                                    } else {
+                                      themeController.setDarkTheme();
+                                    }
+                                  }),
+                              CircleAvatar(
+                                radius: 20,
+                                backgroundColor: Colors.white,
+                                child: Badge.count(
+                                  count: 1,
+                                  child: IconButton(
+                                      onPressed: () {
+                                        context.push('/notifi');
+                                      },
+                                      icon: const Icon(Icons.notifications)),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        onTap: () {
-                          context.push('/notifi');
-                        },
                       ),
 
                       ///search bar
@@ -130,8 +153,6 @@ class HomePage extends HookWidget {
                         ),
                       ),
                       const SizedBox(height: 16),
-
-                      // Featured Section
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -196,10 +217,13 @@ class HomePage extends HookWidget {
           ]),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+
         ///current index
         currentIndex: currentIndex.value,
+
         ///on tap function
         onTap: onBottomNavTapped,
+
         ///items
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
